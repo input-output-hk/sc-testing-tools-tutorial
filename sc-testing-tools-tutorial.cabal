@@ -24,6 +24,7 @@ common lang
     ScopedTypeVariables
     StandaloneDeriving
     TemplateHaskell
+    TypeFamilies
 
   ghc-options:
     -Wall -Wnoncanonical-monad-instances -Wunused-packages
@@ -53,8 +54,12 @@ test-suite tutorial-pingpong-test
   type:           exitcode-stdio-1.0
   hs-source-dirs: test
   main-is:        PingPong/Spec.hs
+  other-modules:  PingPong.TestingInterface
   build-depends:
+    , aeson
     , base                     >=4.14 && <5
+    , convex-tasty-streaming
+    , convex-testing-interface
     , sc-testing-tools-tutorial
     , tasty
     , tasty-hunit
@@ -65,7 +70,10 @@ test-suite tutorial-auction-test
   hs-source-dirs: test
   main-is:        Auction/Spec.hs
   build-depends:
+    , aeson
     , base                     >=4.14 && <5
+    , convex-tasty-streaming
+    , convex-testing-interface
     , plutus-tx
     , sc-testing-tools-tutorial
     , tasty
