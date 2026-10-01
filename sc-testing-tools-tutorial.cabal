@@ -19,11 +19,13 @@ common lang
     GeneralizedNewtypeDeriving
     ImportQualifiedPost
     MultiParamTypeClasses
+    NamedFieldPuns
     NumericUnderscores
     OverloadedStrings
     ScopedTypeVariables
     StandaloneDeriving
     TemplateHaskell
+    TypeApplications
     TypeFamilies
 
   ghc-options:
@@ -52,14 +54,27 @@ library
 test-suite tutorial-pingpong-test
   import:         lang
   type:           exitcode-stdio-1.0
-  hs-source-dirs: test
+  hs-source-dirs: test src
   main-is:        PingPong/Spec.hs
-  other-modules:  PingPong.TestingInterface
+  other-modules:
+    PingPong.Scripts
+    PingPong.TestingInterface
+
   build-depends:
     , aeson
     , base                     >=4.14 && <5
+    , cardano-api
+    , containers
+    , convex-base
+    , convex-coin-selection
+    , convex-mockchain
     , convex-tasty-streaming
     , convex-testing-interface
+    , convex-wallet
+    , QuickCheck
+    , plutus-ledger-api
+    , plutus-tx
+    , plutus-tx-plugin
     , sc-testing-tools-tutorial
     , tasty
     , tasty-hunit
@@ -72,9 +87,18 @@ test-suite tutorial-auction-test
   build-depends:
     , aeson
     , base                     >=4.14 && <5
+    , cardano-api
+    , containers
+    , convex-base
+    , convex-coin-selection
+    , convex-mockchain
     , convex-tasty-streaming
     , convex-testing-interface
+    , convex-wallet
+    , QuickCheck
+    , plutus-ledger-api
     , plutus-tx
+    , plutus-tx-plugin
     , sc-testing-tools-tutorial
     , tasty
     , tasty-hunit
