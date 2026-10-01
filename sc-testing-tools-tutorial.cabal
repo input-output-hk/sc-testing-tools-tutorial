@@ -58,6 +58,7 @@ test-suite tutorial-pingpong-test
   main-is:        PingPong/Spec.hs
   other-modules:
     PingPong.Scripts
+    PingPong.TestingInterface
 
   build-depends:
     , aeson

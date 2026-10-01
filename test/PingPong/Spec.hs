@@ -1,9 +1,12 @@
 module Main where
 
+import Convex.TestingInterface (defaultMainTestingInterface, propRunActions)
+
 import Test.Tasty
 import Test.Tasty.HUnit
 
 import PingPong.Contract
+import PingPong.TestingInterface
 
 main :: IO ()
 main = defaultMain tests
@@ -13,6 +16,7 @@ tests =
   testGroup
     "PingPong Tests"
     [ testCase "PingPong state values are represented correctly" pingPongStateExamples
+    , propRunActions @PingPongModel "Property-based testing of PingPong contract"
     ]
 
 pingPongStateExamples :: Assertion
